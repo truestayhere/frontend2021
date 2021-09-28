@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Todos() {
+function TodosWithDelete() {
     const [todo, setTodo] = useState({ desc: '', date: '' })
     const [todos, setTodos] = useState([])
 
@@ -13,6 +13,10 @@ function Todos() {
         setTodo({ ...todo, [event.target.name]: event.target.value })
     }
 
+    const deleteTodo = (index) => {
+        setTodos(todos.filter((todo, i) => i !== index))
+    }
+
     return (
         <div>
             <input name="desc" value={todo.desc} onChange={inputChanged} />
@@ -21,7 +25,8 @@ function Todos() {
             <table>
                 <tbody>
                     {
-                        todos.map((todo, index) => <tr key={index}><td>{todo.desc} {todo.date}</td></tr>)
+                        todos.map((todo, index) => <tr key={index}><td>{todo.desc} {todo.date}</td>
+                            <td><button onClick={() => deleteTodo(index)}>Delete</button></td></tr>)
                     }
                 </tbody>
             </table>
@@ -29,4 +34,4 @@ function Todos() {
     )
 }
 
-export default Todos
+export default TodosWithDelete;
