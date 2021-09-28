@@ -59,14 +59,14 @@ ul,
 }
 
 /* Style the caret/arrow */
-.caret {
+.Caret {
   cursor     : pointer;
   user-select: none;
   /* Prevent text selection */
 }
 
 /* Create the caret/arrow with a unicode, and style it */
-.caret::before {
+.Caret::before {
   content     : "\25B6";
   color       : black;
   display     : inline-block;
@@ -74,16 +74,16 @@ ul,
 }
 
 /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
-.caret-down::before {
+.Caret-down::before {
   transform: rotate(90deg);
 }
 
 /* Hide the nested list */
-.nested {
+.Nested {
   display: none;
 }
 
 /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
-.active {
+.Active {
   display: block;
 }

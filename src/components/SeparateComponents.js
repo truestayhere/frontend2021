@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import TodoTable from './TodoTable'
 
-function Todos() {
+function SeparateComponents() {
     const [todo, setTodo] = useState({ desc: '', date: '' })
     const [todos, setTodos] = useState([])
 
@@ -13,24 +14,18 @@ function Todos() {
         setTodo({ ...todo, [event.target.name]: event.target.value })
     }
 
+    const deleteTodo = (index) => {
+        setTodos(todos.filter((todo, i) => i !== index))
+    }
+
     return (
         <div>
             <input name="desc" value={todo.desc} onChange={inputChanged} />
             <input name="date" value={todo.date} onChange={inputChanged} />
             <button onClick={addTodo}>Add</button>
-            <table>
-                <tbody>
-                    {
-                        todos.map((todo, index) =>
-                            <tr key={index}>
-                                <td>{todo.desc}</td>
-                                <td>{todo.date}</td>
-                            </tr>)
-                    }
-                </tbody>
-            </table>
+            <TodoTable todos={todos} deleteTodo={deleteTodo} />
         </div >
     )
 }
 
-export default Todos
+export default SeparateComponents
